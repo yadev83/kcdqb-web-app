@@ -27,7 +27,7 @@ const mcReducer = (state = initialState, action) => {
                 ...state,
                 fetching: false,
                 fetched: true,
-                stats: payload
+                stats: payload.payload
             }
 
         case MC_GETSTATS_REJECTED:
