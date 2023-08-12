@@ -22,7 +22,7 @@ class Layout extends PureComponent {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/mods/all">Base de données</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href={`${window.location.protocol}//${window.location.hostname}:8123`} target="_blank" noopener noreferrer>La Map</Nav.Link>
+                        <Nav.Link href={`${window.location.protocol}//${window.location.hostname}:8123`} target="_blank" rel="noopener noreferrer">La Map</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

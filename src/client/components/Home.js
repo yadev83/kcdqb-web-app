@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import lo from 'lodash'
 import { Loading, Error } from '../utils/components'
+import ServerInfo from './ServerInfo'
 
 class Home extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Home extends Component {
         return <Container>
             <Row>
                 <Col xs={12}>
-                    {loadingStats ? <Loading /> : errorStats ? <Error error={errorStats} /> : stats ? <pre>{JSON.stringify(stats, null, 2)}</pre> : null}
+                    {loadingStats ? <Loading /> : errorStats ? <Error error={errorStats} /> : stats ? <ServerInfo serverStats={stats} /> : null}
                 </Col>
                 <div>
                     <h1>Télécharger le pack KCDQB complet</h1>
@@ -52,7 +53,7 @@ class Home extends Component {
 Home.propTypes = {
     stats: PropTypes.object,
     loadingStats: PropTypes.bool,
-    errorStats: PropTypes.object
+    errorStats: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
 }
 
 export default Home
