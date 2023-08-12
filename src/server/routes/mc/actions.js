@@ -7,7 +7,8 @@ import {
     MCSERVER_QUERY_TYPE_STAT,
     readBufferString,
     hexToAscii,
-    swapEndianMode
+    swapEndianMode,
+    request
 } from '../../utils'
 
 /**
@@ -78,6 +79,33 @@ export const getServerStats = (req, res) => {
 
     const handShake = Buffer.concat([magicHeader, Buffer.from([MCSERVER_QUERY_TYPE_HANDSHAKE]), sessionId])
     sendPacket(handShake)
+}
+
+export const getPlayersSkin = async (req, res) => {
+    let players = req.query['players'].split(",");
+    console.log("players = ", players)
+    const UUIDs = new Map()
+    
+    const getSkins = async () => {
+        const skinsUrl = new Map()
+        await request.post("https://api.mojang.com/profiles/minecraft", players, null).then(async profiles => {
+            profiles.data.forEach(user => UUIDs.set(user.name, user.id))
+
+            for(let [username, uuid] of UUIDs) {
+                await request.get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid).then(response => {
+                    let buff = Buffer.from(response.data['properties'][0]['value'], 'base64')
+                    const decodedBase64Json = JSON.parse(buff.toString('ascii'))
+                    skinsUrl.set(username, decodedBase64Json['textures']['SKIN']['url'])
+                })
+            }
+        })
+        return skinsUrl
+    }
+    
+    const skinsUrl = await getSkins();
+    console.log(skinsUrl)
+    res.status(200).json({ payload: Object.fromEntries(skinsUrl)});
+
 }
 
 const parseResponse = (response) => {
