@@ -9,4 +9,6 @@ Still need to have `npm run server` running for the rest api
 recommended to use pm2 to have both the static site and api server running as services on a debian host
 
 ### Dependencies  
-Made possible using `create-react-app`, `npm` and `express`
+Made possible using `create-react-app`, `npm` and `express`  
+Node Version    : `node v18.17.1`  
+NPM Version     : `npm v9.8.1`
