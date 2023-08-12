@@ -1,1 +1,1 @@
-export { default as Test } from './test'
+export { default as McRouter } from './mc'

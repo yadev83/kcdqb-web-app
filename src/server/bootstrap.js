@@ -4,8 +4,8 @@ import * as routes from './routes'
 const router = Router()
 
 const bootstrap = () => {
-    router.use('/api/test', routes.Test)
-    
+    router.use('/api/mc', routes.McRouter)
+
     return router 
 }
 

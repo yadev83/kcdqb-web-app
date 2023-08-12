@@ -1,49 +1,24 @@
 import { PureComponent } from 'react'
-import logo from './logo.svg'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './styles/App.css'
-import { greet } from './actions/test'
-import { connect } from 'react-redux'
+
+import { Layout } from './utils/components'
+
+import HomeContainer from './containers/Home'
 
 class App extends PureComponent {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			message: null
-		}
-	}
-
-	componentDidMount() {
-		this.props.greeting()
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		if(prevProps.message != this.props.message || !this.state.message)
-			this.setState({message: this.props.message})
-	}
-
 	render() {
-		return <div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>HERE WE GO !</p>
-				<a className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>Learn React</a>
-				{this.state.message}
-			</header>
-		</div>
+		return <BrowserRouter>
+			<Routes>
+				<Route exact path={'/'} element={<Layout>
+					<HomeContainer />
+				</Layout>} />
+
+				{/* If no match happened, 404 */}
+				<Route path={'*'} element={<div>404 - Not found</div>}/>
+			</Routes>
+		</BrowserRouter>
 	}
 }
 
-const mapStateToProps = state => ({
-	message: state.test.message
-})
-
-const mapDispatchToProps = dispatch => ({
-	greeting: () => dispatch(greet())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
