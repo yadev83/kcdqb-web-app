@@ -2,7 +2,7 @@ import { PureComponent } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './styles/App.css'
 
-import { Layout } from './utils/components'
+import { Layout, NotFound } from './utils/components'
 
 import HomeContainer from './containers/Home'
 
@@ -16,7 +16,7 @@ class App extends PureComponent {
 
 				{/* If no match happened, 404 */}
 				<Route path={'*'} element={<Layout>
-					<div>404 - Not found</div>
+					<NotFound />
 				</Layout>}/>
 			</Routes>
 		</BrowserRouter>

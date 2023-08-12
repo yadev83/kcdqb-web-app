@@ -15,13 +15,14 @@ class Layout extends PureComponent {
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/">Accueil</Nav.Link>
-                        <NavDropdown title="Mods" id="basic-nav-dropdown">
+                        <Nav.Link href="/downloads">Téléchargements</Nav.Link>
+                        <NavDropdown title="Les Mods" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/mods/activites">Y a quoi à faire ?</NavDropdown.Item>
                             <NavDropdown.Item href="/mods/important">Les mods majeurs</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/mods/all">Base de données</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href={`${window.location.protocol}//${window.location.hostname}:8123`} target="_blank" noopener noreferrer>Map</Nav.Link>
+                        <Nav.Link href={`${window.location.protocol}//${window.location.hostname}:8123`} target="_blank" noopener noreferrer>La Map</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
