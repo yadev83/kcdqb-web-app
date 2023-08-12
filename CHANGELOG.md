@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- CDN Routes
+    - /api/cdn/list => Lists all the files in the server's /cdn folder (root of the repo)
+- .gitignore updated to ignore the /cdn folder. You might have to create a /cdn folder manually in your repo if using /api/cdn routes
+
 ### Fixed
 - Fixes the issue with proxying to back end on prod env
 
