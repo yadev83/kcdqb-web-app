@@ -87,12 +87,18 @@ export const getPlayersSkin = async (req, res) => {
     const UUIDs = new Map()
     
     const getSkins = async () => {
+        // We will fill up this map with <username, skinUrl> entries
         const skinsUrl = new Map()
+        // First we need to get uuid for each received username 
         await request.post("https://api.mojang.com/profiles/minecraft", players, null).then(async profiles => {
+            // Storing each corresponding uuid in a map of <username, uuid> 
             profiles.data.forEach(user => UUIDs.set(user.name, user.id))
 
+            // Iterating on our map
             for(let [username, uuid] of UUIDs) {
+                // Then we need to ask for profile using UUID to construct request
                 await request.get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid).then(response => {
+                    // Interesting field is base64-encoded, we need to decode it
                     let buff = Buffer.from(response.data['properties'][0]['value'], 'base64')
                     const decodedBase64Json = JSON.parse(buff.toString('ascii'))
                     skinsUrl.set(username, decodedBase64Json['textures']['SKIN']['url'])
@@ -103,7 +109,6 @@ export const getPlayersSkin = async (req, res) => {
     }
     
     const skinsUrl = await getSkins();
-    console.log(skinsUrl)
     res.status(200).json({ payload: Object.fromEntries(skinsUrl)});
 
 }
