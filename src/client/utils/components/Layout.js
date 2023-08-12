@@ -6,10 +6,10 @@ class Layout extends PureComponent {
     render() {
         const {children} = this.props
 
-        return <div style={{maxWidth: '100%', minWidth: '100%'}}>
+        return <Container fluid>
             {/* TODO :: ADD A MENU */}
             {children}
-        </div>
+        </Container>
     }
 }
 

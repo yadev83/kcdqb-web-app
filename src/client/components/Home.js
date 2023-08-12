@@ -24,28 +24,26 @@ class Home extends Component {
         const {loadingStats, errorStats} = this.props
         const {stats} = this.state
 
-        return <Container fluid>
-            <Row>
-                <Col xs={12}>
-                    {loadingStats ? <Loading /> : errorStats ? <Error error={errorStats} /> : stats ? <pre>{JSON.stringify(stats, null, 2)}</pre> : null}
-                </Col>
-                <div>
-                    <h1>Télécharger le pack KCDQB complet</h1>
-                    <a href="/download/kcdqb-pack.zip">KCDQB Pack</a><br />
-                    <em>Contient Optifine 1.20, Faithful 1.20, Fresh Animations 1.20 et Complementary Reimagined 1.20</em>
+        return <Row>
+            <Col xs={12}>
+                {loadingStats ? <Loading /> : errorStats ? <Error error={errorStats} /> : stats ? <pre>{JSON.stringify(stats, null, 2)}</pre> : null}
+            </Col>
+            <div>
+                <h1>Télécharger le pack KCDQB complet</h1>
+                <a href="/download/kcdqb-pack.zip">KCDQB Pack</a><br />
+                <em>Contient Optifine 1.20, Faithful 1.20, Fresh Animations 1.20 et Complementary Reimagined 1.20</em>
+            </div>
+            <div>
+                <h1>Liens utiles de téléchargement</h1>
+                <hr />
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <a href="https://optifine.net/home">Optifine Download</a>
+                    <a href="https://minecraft.fr/faithful-32x32/">Faithful Resource Pack</a>
+                    <a href="https://www.curseforge.com/minecraft/texture-packs/fresh-animations">Fresh Animations</a>
+                    <a href="https://www.curseforge.com/minecraft/customization/complementary-reimagined">Complementary Reimagined (shader pack)</a>
                 </div>
-                <div>
-                    <h1>Liens utiles de téléchargement</h1>
-                    <hr />
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <a href="https://optifine.net/home">Optifine Download</a>
-                        <a href="https://minecraft.fr/faithful-32x32/">Faithful Resource Pack</a>
-                        <a href="https://www.curseforge.com/minecraft/texture-packs/fresh-animations">Fresh Animations</a>
-                        <a href="https://www.curseforge.com/minecraft/customization/complementary-reimagined">Complementary Reimagined (shader pack)</a>
-                    </div>
-                </div>
-            </Row>
-        </Container>
+            </div>
+        </Row>
     }
 }
 
