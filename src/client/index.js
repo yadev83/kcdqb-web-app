@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { render as RenderDOM } from 'react-dom'
 import { Provider } from 'react-redux'
 import { configureStore, history } from './store'
 
@@ -9,18 +9,14 @@ import './styles/index.css'
 import reportWebVitals from './utils/reportWebVitals'
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const store = configureStore({}, history)
 
-const store = configureStore({
-	language: {
-		locale: 'fr'
-	}
-}, history)
+const render = Container => RenderDOM(<Provider store={store}>
+		<React.StrictMode>
+			<Container />
+		</React.StrictMode>
+	</Provider>, document.getElementById('root'))
 
-root.render(<Provider store={store}>
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
-</Provider>)
+render(App)
 
 reportWebVitals(console.log);
