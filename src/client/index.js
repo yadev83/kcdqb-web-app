@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { configureStore, history } from './store'
 
 import App from './App'
+import 'bootstrap/dist/css/bootstrap.css'
 import './styles/index.css'
 import reportWebVitals from './utils/reportWebVitals'
 
