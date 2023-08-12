@@ -15,7 +15,9 @@ class App extends PureComponent {
 				</Layout>} />
 
 				{/* If no match happened, 404 */}
-				<Route path={'*'} element={<div>404 - Not found</div>}/>
+				<Route path={'*'} element={<Layout>
+					<div>404 - Not found</div>
+				</Layout>}/>
 			</Routes>
 		</BrowserRouter>
 	}
