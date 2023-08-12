@@ -17,7 +17,7 @@ class Home extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(!lo.isEqual(prevProps.stats, this.props.stats)) {
-            this.setState({stats: this.props.stats})
+            this.setState({stats: lo.cloneDeep(this.props.stats)})
         }
     }
 
