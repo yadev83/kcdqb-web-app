@@ -1,4 +1,4 @@
-import {request} from '../utils'
+import { request, API_URL } from '../utils'
 
 export const MC_GETSTATS = 'MC_GETSTATS'
 export const MC_GETSTATS_FULFILLED = 'MC_GETSTATS_FULFILLED'
@@ -8,7 +8,7 @@ export function fetchServerStats() {
     return dispatch => {
         dispatch({type: MC_GETSTATS})
 
-        request.get('/api/mc/stats').then(response => {
+        request.get(`${API_URL}/api/mc/stats`).then(response => {
             const payload = response.data
             dispatch({type: MC_GETSTATS_FULFILLED, payload})
         }).catch(response => {
