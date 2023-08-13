@@ -5,6 +5,7 @@ const router = Router()
 
 const bootstrap = () => {
     router.use('/api/mc', routes.McRouter)
+    router.use('/api/cdn', routes.CDNRouter)
 
     return router 
 }

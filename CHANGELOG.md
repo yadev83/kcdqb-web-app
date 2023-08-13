@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2023-08-13
+
+### Added
+- CDN Routes
+    - /api/cdn/list => Lists all the files in the server's /cdn folder (root of the repo)
+- .gitignore updated to ignore the /cdn folder. You might have to create a /cdn folder manually in your repo if using /api/cdn routes
+- server is now able to serve files to download on :API_URL/cdn/:filename (need a /cdn folder in the project)
+- frontend for downloadable files on the react client app
+
+### Changed
+- Changed the API_URL for dev env : now using localhost:3001 (necessary for the downloadable files)
+
+### Fixed
+- Fixes the issue with proxying to back end on prod env
+
 ## [0.1.1] - 2023-08-12
 
 ### Added
