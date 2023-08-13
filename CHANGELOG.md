@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2023-08-13
+
 ### Added
 - CDN Routes
     - /api/cdn/list => Lists all the files in the server's /cdn folder (root of the repo)
