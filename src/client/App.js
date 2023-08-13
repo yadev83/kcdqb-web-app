@@ -5,6 +5,7 @@ import './styles/App.css'
 import { Layout, NotFound } from './utils/components'
 
 import HomeContainer from './containers/Home'
+import DownloadsContainer from './containers/Downloads'
 
 class App extends PureComponent {
 	render() {
@@ -12,6 +13,10 @@ class App extends PureComponent {
 			<Routes>
 				<Route exact path={'/'} element={<Layout>
 					<HomeContainer />
+				</Layout>} />
+
+				<Route exact path={'/downloads'} element={<Layout>
+					<DownloadsContainer />
 				</Layout>} />
 
 				{/* If no match happened, 404 */}

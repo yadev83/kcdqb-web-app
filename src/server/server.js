@@ -5,7 +5,6 @@ import bootstrap from './bootstrap'
 
 import path from 'path'
 import fs from 'fs'
-import { fileURLToPath } from 'url'
 import favicon from 'serve-favicon'
 
 const server = express()
@@ -14,7 +13,6 @@ server.use(logger('tiny'))
 
 // Setup favicon path
 const publicPath = path.join('public')
-const srcPath = path.join('src')
 
 const faviconPath = path.join(publicPath, 'favicon.ico')
 server.use(favicon(faviconPath))
@@ -22,16 +20,15 @@ server.use(favicon(faviconPath))
 // Setup assets path
 server.use('/assets', express.static(path.join(__dirname, publicPath)))
 
-server.use('/download/:filename', (req, res) => {
-    const filePath = path.join('/home/web/downloadable', req.params.filename)
+server.use('/cdn/:filename', (req, res) => {
+    const {filename} = req.params
+
+    const filePath = path.join(process.cwd(), 'cdn', filename)
+
     if(!fs.existsSync(filePath))
         return res.sendStatus(404)
 
-    return res.download(path.join('/home/web/downloadable', req.params.filename))
-})
-
-server.use('/pack', (req, res) => {
-    res.download('/home/web/kcdqb-pack.zip')
+    return res.download(filePath)
 })
 
 server.use((req, res, next) => {
