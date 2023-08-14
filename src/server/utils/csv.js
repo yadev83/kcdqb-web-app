@@ -27,6 +27,6 @@ export function read(filePath, delimiter = ';', hasHeader = true) {
         })
     
         // Start the reading
-        fs.createReadStream(filePath).pipe(parse({delimiter: delimiter}))
+        fs.createReadStream(filePath).pipe(parser)
     })
 }
