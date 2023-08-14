@@ -1,22 +1,41 @@
 import fs from 'fs'
 import { parse } from 'csv-parse'
 
-export function read(filePath, delimiter = ';', hasHeader = true) {
+export function readCSV(filePath, delimiter = ';', hasHeader = true) {
     return new Promise((resolve, reject) => {
-        const output = {}
+        const output = []
+        const keys = []
 
         const records = []
-        const parser = parse({delimiter: delimiter})
+        const parser = parse({delimiter: delimiter, relax_quotes: true})
     
         const stream = fs.createReadStream(filePath)
     
         // Parse
-        stream.on('data', (row) => {
+        parser.on('data', (row) => {
             records.push(row)
         })
     
         // On end => resolve
         stream.on('end', () => {
+            records.forEach((record, lineIndex) => {
+                // If we use header lines, we name the output object's keys based on the first line of the file
+                if(hasHeader) {
+                    if(lineIndex === 0) {
+                        keys.push(...record)
+                    } else {
+                        const row = {}
+                        keys.forEach((key, index) => {
+                            row[key] = record[index]
+                        })
+
+                        output.push(row)
+                    }
+                } else {
+                    output.push(record)
+                }
+            })
+            
             resolve(output)
         })
     
@@ -27,6 +46,6 @@ export function read(filePath, delimiter = ';', hasHeader = true) {
         })
     
         // Start the reading
-        fs.createReadStream(filePath).pipe(parser)
+        stream.pipe(parser)
     })
 }
