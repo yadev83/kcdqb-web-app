@@ -7,7 +7,7 @@ export function readCSV(filePath, delimiter = ';', hasHeader = true) {
         const keys = []
 
         const records = []
-        const parser = parse({delimiter: delimiter, relax_quotes: true})
+        const parser = parse({delimiter: delimiter, relax_quotes: true, encoding: 'latin1'})
     
         const stream = fs.createReadStream(filePath)
     
