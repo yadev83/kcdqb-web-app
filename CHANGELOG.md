@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2023-08-15
+
+### Added
+- The server is now able to read csv files from a "database" folder
+- Added a mods list on the frontend that reads from a complete csv file for the mods of the server
+- Added a filtering system to the front end for mods
+
 ## [0.2.0] - 2023-08-13
 
 ### Added
