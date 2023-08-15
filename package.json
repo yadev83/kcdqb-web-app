@@ -27,6 +27,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "csv": "^6.3.1",
     "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
     "eslint": "^8.47.0",

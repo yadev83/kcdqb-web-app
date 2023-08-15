@@ -20,7 +20,7 @@ class Layout extends PureComponent {
                             <NavDropdown.Item href="/mods/activites">Y a quoi à faire ?</NavDropdown.Item>
                             <NavDropdown.Item href="/mods/important">Les mods majeurs</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/mods/all">Base de données</NavDropdown.Item>
+                            <NavDropdown.Item href="/mods">Liste des mods</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href={`${window.location.protocol}//${window.location.hostname}:8123`} target="_blank" rel="noopener noreferrer">La Map</Nav.Link>
                     </Nav>

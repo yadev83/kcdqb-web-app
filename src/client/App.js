@@ -6,6 +6,7 @@ import { Layout, NotFound } from './utils/components'
 
 import HomeContainer from './containers/Home'
 import DownloadsContainer from './containers/Downloads'
+import ModsListContainer from './containers/mods/List'
 
 class App extends PureComponent {
 	render() {
@@ -17,6 +18,10 @@ class App extends PureComponent {
 
 				<Route exact path={'/downloads'} element={<Layout>
 					<DownloadsContainer />
+				</Layout>} />
+
+				<Route exact path={'/mods'} element={<Layout>
+					<ModsListContainer />
 				</Layout>} />
 
 				{/* If no match happened, 404 */}

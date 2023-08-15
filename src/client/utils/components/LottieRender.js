@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Lottie from 'react-lottie'
 
-import notFoundAnimation from '../../lotties/404'
-
 class LottieRender extends Component {
     render() {
         const {name, loop = true, autoplay = true, width = 600, height = 600} = this.props
@@ -15,7 +13,7 @@ class LottieRender extends Component {
             animationData: animationData
         }
 
-        return <Lottie options={lottieOptions} width={width} height={height} />
+        return <Lottie isClickToPauseDisabled={true} options={lottieOptions} width={width} height={height} />
     }
 }
 
