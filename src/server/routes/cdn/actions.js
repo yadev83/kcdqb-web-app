@@ -18,7 +18,7 @@ export const getDownloadablesList = (req, res) => {
             })
         }))
     }).then((files) => {
-        return res.status(200).json(files)
+        return res.status(200).json(files.sort((fileA, fileB) => fileB.updated_at - fileA.updated_at))
     }).catch(err => {
         console.error(`ERROR while getDownloadablesList ${err.toString()}`)
         return res.status(500).json({error: `ERROR while getDownloadablesList ${err.toString()}`})
