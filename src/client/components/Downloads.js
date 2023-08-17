@@ -45,7 +45,6 @@ class Downloads extends Component {
                         <thead>
                             <th>Nom du fichier</th>
                             <th>Taille</th>
-                            <th>Mise en ligne</th>
                             <th>Dernière mise à jour</th>
                             <th>Télécharger</th>
                         </thead>
@@ -64,14 +63,12 @@ class Downloads extends Component {
                                 }
 
                                 // Produce human readable create/update dates
-                                const creationDate = new Date(file.created_at).toLocaleString()
                                 const updateDate = new Date(file.updated_at).toLocaleString()
                                 
                                 // Render the file row
                                 return <tr key={index}>
                                     <td>{file.name}</td>
                                     <td>{size.toFixed(3)} {SIZE_TYPES[sizeType]}</td>
-                                    <td>{creationDate}</td>
                                     <td>{updateDate}</td>
                                     <td><a href={`${API_URL}/cdn/${file.name}`}>Télécharger</a></td>
                                 </tr>
